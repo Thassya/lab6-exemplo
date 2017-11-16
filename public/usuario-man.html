@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Usuário Man</title>
+  </head>
+  <body>
+    <h1>Usuario Man</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <script type="text/javascript">
+      function atualiza(){
+      var xhr = new XMLHttpRequest();
+      var saida = document.querySelector('tbody');
+
+      xhr.open('GET', '/usuario', true);
+      xhr.onload = function(){
+        console.log(this.responseText);
+        saida.innerHtml = "";
+
+        var usuarios = JSON.parse(this.responseText);
+        for(var i in usuarios){
+        var usuario = usuarios[i];
+        var linha = document.createElement('tr');
+        linha.innerHtml =
+          "<td>"+ usuario.nome +"</td>"
+        + "<td>"+ usuario.email + "</td>";
+        saida.appendChild(linha);
+
+        }
+      }
+      xhr.send();
+    }
+    setInterval(atualiza,400);
+      </script>
+  </body>
+</html>

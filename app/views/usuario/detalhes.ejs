@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detalhes Usuário</title>
+  </head>
+  <body>
+    <h1>Detalhes Usuário</h1>
+    <h2><%=usuario.nome%></h2>
+      <a href="malito:<%=usuario.email%>"><%=usuario.email%></a>
+
+      <form action="excluir-usuario.html?id=<%usuario.id%>" method="post">
+        <input type="submit" value="Excluir"/>
+        <input type="hidden" name="id" value="<%=usuario.id%>"/>
+      </form>
+  </body>
+</html>
